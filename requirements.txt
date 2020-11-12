@@ -1,0 +1,4 @@
+sudo apt update
+sudo apt install mysql-server
+sudo mysql_secure_installation
+pip3 install mysql-connector-python
