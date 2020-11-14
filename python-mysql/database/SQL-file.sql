@@ -2,10 +2,16 @@ create database dbclient;
 
 use dbclient;
 
-create table Customer(id int, first_name varchar(30) not null, last_name varchar(30) not null, dni varchar(9) not null);
+create table Customer(
+             id int not null auto_increment primary key, 
+             first_name varchar(30) not null, 
+             last_name varchar(30) not null, 
+             dni varchar(9) not null
+             );
 
 alter table Customer add unique (dni);
 
+<<<<<<< HEAD
 
 alter table Customer add primary key (id);
 
@@ -13,6 +19,8 @@ alter table Customer drop column primary key;
 describe Customer;
 
 alter table Customer modify column id int auto_increment;
+=======
+>>>>>>> cf35db830312eb99598af623ce7f31f30344566e
 
 insert into Customer (first_name,last_name,dni)
 values('Neldis','Barrios', 'Y34FRDS43');
