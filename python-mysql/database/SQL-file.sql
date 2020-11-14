@@ -9,6 +9,6 @@ create table Customer(
              dni varchar(9) not null
              );
 
-alter table Customer add unique (id,dni);
+alter table Customer add unique (dni);
 
 
