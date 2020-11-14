@@ -11,11 +11,11 @@ class DAO:
                 port=get_secret('PORT'),
                 user=get_secret('USER'),
                 password=get_secret('PASSWORD'),
-                database=get_secret('DATABASE'),
+                database=get_secret('DATABASE'),  
                 auth_plugin=get_secret('AUTH_PLUGIN')
             )
-            if self.myconnection.is_connected():
-                print('Successful connection')
+            # if self.myconnection.is_connected():
+            #     print('Successful connection')
 
                 
         except Error as ex:
@@ -31,12 +31,25 @@ class DAO:
         if self.myconnection.is_connected():
             try:
                 cursor= self.myconnection.cursor()
-                cursor.execute("SELECT * FROM Customer ORDER BY first_name ASC")
+                cursor.execute("SELECT * FROM Customer ORDER BY id ASC")
                 result=cursor.fetchall()
                 return result
 
             except Error as ex:
                 print(f'Error during connection:{ex}')
+
+    def find_client(self,Id):
+        if self.myconnection.is_connected():
+            try:
+                cursor= self.myconnection.cursor()
+                sql="SELECT * FROM Customer WHERE id={}"
+                cursor.execute(sql.format(Id))
+                result=cursor.fetchone()
+                return result
+
+            except Error as ex:
+                print(f'Error during connection:{ex}')
+
 
     def register_clients(self,values):
         if self.myconnection.is_connected():
@@ -52,18 +65,17 @@ class DAO:
                 print(f'Error during connection:{ex}')  
 
 
-    # def update_client(self,new_f,new_l, new_dni):
-    #     if self.myconnection.is_connected():
-    #         try:
-    
-    #             cursor= self.myconnection.cursor()
-    #             sql= "UPDATE Customer SET first_name='{0}',last_name='{1}',dni= '{2}' WHERE first_name='{0}',last_name='{1}' dni='{2}'"
-    #             cursor.execute(sql.format(new_f,new_l,new_dni))
-    #             self.myconnection.commit()
-    #             print("Cliente actualizado\n")
+    def update_client(self,Id,first_name,last_name,dni):
+        if self.myconnection.is_connected():
+            try:
+                cursor= self.myconnection.cursor()
+                sql= "UPDATE Customer SET first_name='{}',last_name='{}',dni='{}' WHERE id={}"
+                cursor.execute(sql.format(first_name,last_name,dni,Id))
+                self.myconnection.commit()
+                print("Cliente actualizado\n")
 
-    #         except Error as ex:
-    #             print(f'Error durante la conexion:{ex}') 
+            except Error as ex:
+                print(f'Error durante la conexion:{ex}') 
 
 
 

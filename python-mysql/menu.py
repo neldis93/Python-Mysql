@@ -58,20 +58,25 @@ def advanced_options(option):
         print('Adding client:\n')
         clients= manager.is_valid_client()
         try:
-            dao.register_clients(clients)
+            if len(clients) > 0:
+                dao.register_clients(clients)
+            else:
+                print('The requested data was not found')
         except:
             print('An error occurred')
 
     if option == '4':
-        print('Modify clients:')
-        # try:
-        #     client=dao.list_client()
-        #     print('List all: \n')
-        #     if len(client) > 0:
-        #         new_update=None
-
-        # except:
-        #logic
+        try:
+            client=dao.list_client()
+            print('List all: \n')
+            if len(client) > 0:
+                manager.update_data(client)
+            else:
+                print('The requested data was not found')
+                
+        except:
+            print('An error occurred')
+        
     if option == '5':
         try:
             client= dao.list_client()
