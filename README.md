@@ -18,4 +18,4 @@ pip install -r requirements.txt
 ## To test the program
 
 ```bash
-python ./python-mysql/core.py
+python3 ./python-mysql/core.py
