@@ -82,7 +82,6 @@ class DAO:
     def delete_client(self,code_delete):
         if self.myconnection.is_connected():
             try:
-    
                 cursor= self.myconnection.cursor()
                 sql= "DELETE FROM Customer WHERE dni= '{0}'"
                 cursor.execute(sql.format(code_delete))
