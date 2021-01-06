@@ -72,10 +72,10 @@ class DAO:
                 sql= "UPDATE Customer SET first_name='{}',last_name='{}',dni='{}' WHERE id={}"
                 cursor.execute(sql.format(first_name,last_name,dni,Id))
                 self.myconnection.commit()
-                print("Cliente actualizado\n")
+                print("Customer updated\n")
 
             except Error as ex:
-                print(f'Error durante la conexion:{ex}') 
+                print(f'Error during connection:{ex}') 
 
 
 
@@ -90,4 +90,4 @@ class DAO:
                 print("Customer removed\n")
 
             except Error as ex:
-                print(f'Error during connection::{ex}') 
+                print(f'Error during connection:{ex}') 
