@@ -7,5 +7,5 @@ def get_secret(secret_name, secrets=secret):
     try:
         return secrets[secret_name]
     except:
-        print("variable %s does not exist") % secret_name
+        print("Variable %s does not exist") % secret_name
         
