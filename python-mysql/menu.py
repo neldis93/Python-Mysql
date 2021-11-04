@@ -3,11 +3,8 @@ from database.connection import DAO
 import manager
 
 def main_menu():
-
     while True:
-  
-        helper.clear()    # With this we can clean the terminal of windows, linux or MAC
-
+        helper.clear() # With this we can clean the terminal of windows, linux or MAC
         print('======================')
         print(" WELCOME TO THE MENU ")
         print('======================')
@@ -20,7 +17,6 @@ def main_menu():
         print('======================')
         
         option= input('Select an option > ')
-        
         helper.clear()
 
         if option < '1' or option > '6':
@@ -33,21 +29,17 @@ def main_menu():
 
         input('\nPress ENTER to continue...')
         
-
-
 def advanced_options(option):
-    dao= DAO()
-
+    dao = DAO()
     if option == '1':
         try:
             print('Listing clients: \n')
-            client= dao.list_client()
+            client = dao.list_client()
             if len(client) > 0:
                 manager.listclients(client)
             else:
                 print('The requested data was not found')
-
-        except :
+        except:
             print('An error occurred')
 
     if option == '2':
@@ -56,7 +48,7 @@ def advanced_options(option):
 
     if option == '3':
         print('Adding client:\n')
-        clients= manager.is_valid_client()
+        clients = manager.is_valid_client()
         try:
             if len(clients) > 0:
                 dao.register_clients(clients)
@@ -67,19 +59,18 @@ def advanced_options(option):
 
     if option == '4':
         try:
-            client=dao.list_client()
+            client = dao.list_client()
             print('List all: \n')
             if len(client) > 0:
                 manager.update_data(client)
             else:
                 print('The requested data was not found')
-                
         except:
             print('An error occurred')
         
     if option == '5':
         try:
-            client= dao.list_client()
+            client = dao.list_client()
             print('List all: \n')
             if len(client) > 0:
                 remove_client= manager.data_deletion(client)
@@ -89,8 +80,5 @@ def advanced_options(option):
                     print('Client not found')
             else:
                 print('The requested data was not found')
-
-        except :
+        except:
             print('An error occurred')
-
-    
